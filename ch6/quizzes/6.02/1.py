@@ -13,15 +13,15 @@
 # You should have received a copy of the GNU Affero General Public License        
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-guesses = 0
-while True:
-    guesses += 1
-    guess = int(input('Enter a guess: '))
-    if guess == right_value:
-        print(f'Correct! It took you {guesses} guesses.')
-        break
-    else:
-        if guess > right_value:
-            print('Your guess is too high.')
-        else: print('Your guess is too low.')
+text = ''                                  
+with open('percentages.txt', 'r') as f:
+    text = f.read()
+text = text.split('\n')
+sum1 = 0
+for i in text:
+    try: sum1 += float(i)
+    except: continue
+if 99.9 < sum1 < 100.1:
+    percentage_check = True
+else: percentage_check = False
 

@@ -13,15 +13,26 @@
 # You should have received a copy of the GNU Affero General Public License        
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-guesses = 0
-while True:
-    guesses += 1
-    guess = int(input('Enter a guess: '))
-    if guess == right_value:
-        print(f'Correct! It took you {guesses} guesses.')
-        break
-    else:
-        if guess > right_value:
-            print('Your guess is too high.')
-        else: print('Your guess is too low.')
+text = ''                                  
+with open('grade.txt', 'r') as f: 
+    text = f.read()
+text = text.split('\n')
+
+def append_file(filename, text):   
+    with open(filename, 'a') as f:
+        f.write(f'{text}\n')
+
+passed = 0
+total = 0
+for i in text:      
+    i = int(i)
+    if i >= 6:      
+        append_file('passing.txt', i)    
+        passed += 1 
+    elif i < 6:
+        append_file('failing.txt', i)    
+    total += 1
+
+with open('statistics.txt', 'w') as f:
+    f.write(str(round(passed/total*100, 2)))
 

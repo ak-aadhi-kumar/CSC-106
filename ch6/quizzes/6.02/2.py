@@ -13,15 +13,23 @@
 # You should have received a copy of the GNU Affero General Public License        
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-guesses = 0
-while True:
-    guesses += 1
-    guess = int(input('Enter a guess: '))
-    if guess == right_value:
-        print(f'Correct! It took you {guesses} guesses.')
-        break
+text = ''                                  
+with open('units.txt', 'r') as f: 
+    text = f.read()
+text = text.split('-')
+
+first_write = True
+for i in text:
+    a = i.split('\n')   
+    sum1 = 0
+    for j in a:
+        try: sum1 += int(j)
+        except: pass
+    if first_write:
+        with open('totals.txt', 'w') as f:
+            f.write(f'{sum1}')  
+        first_write = False
     else:
-        if guess > right_value:
-            print('Your guess is too high.')
-        else: print('Your guess is too low.')
+        with open('totals.txt', 'a') as f:
+            f.write(f'\n{sum1}')
 
