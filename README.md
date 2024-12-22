@@ -1,2 +1,2 @@
-# CSC-106
-All the code I have written for my CSC-106 class.
+# CSC106
+This is all the code I've written on stream for CSC106. VoDs can be found at my youtube channel: https://youtube.com/AK_Aadhi_Kumar.
